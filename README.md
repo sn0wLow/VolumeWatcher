@@ -1,4 +1,4 @@
-# VolumeWatcher
+# VolumeWatcher - protects your ears at (almost) all costs
 
 A simple console application which will automatically mute Processes (Audio Sessions) if they cross a certain volume threshold.
 <br/><br/>
@@ -9,9 +9,12 @@ The Peak Volume Threshold can be configued on normalized range up to 1.0.
 <br/>
 Actual Volume meaning Windows' Volume Mixer limits for example, will be taken into account.
 <br/>
-Getting the right Peak Volume Threshold is a bit of a trial and error process,
+Finding the perfect Peak Volume Threshold involves some trial and error and varies greatly depending on your hardware setup.
 <br/>
-therefore changing the Volume externally e.g. by Hardware or similar, will make finding the right Value even more difficult or even impossible.
+<br/>
+Additionally, adjusting the volume through external means, like hardware controls, can make it even harder to pinpoint the
+<br/>
+correct threshold, or sometimes, it might not be possible at all.
 <br/>
 <br/>
 The rate at which the Sessions will be watched can also be adjusted, as well as a few other options.
