@@ -1,7 +1,8 @@
 # VolumeWatcher - protects your ears at (almost) all costs
 
-A simple console application which will automatically mute Processes (Audio Sessions) if they cross a certain volume threshold.
-<br/><br/>
+A simple (**Windows only**) console application which will automatically mute Processes (Audio Sessions) if they cross a certain volume threshold.
+<br/>
+<br/>
 The Peak Volume Threshold can be configued on normalized range up to 1.0.
 <br/>
 1.0 being 100% of the ***actual*** Volume or 0dBFS.
@@ -27,5 +28,6 @@ The rate at which the Sessions will be watched can also be adjusted, as well as 
 ---
 
 Implemented in C# using NAudio for the [WASAPI](https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi) Wrapper.
+
 
 ![ui example](https://i.imgur.com/0JcUre3.png)
