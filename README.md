@@ -4,7 +4,6 @@ A simple (**Windows only**) console application which will automatically mute Pr
 <br/>
 <br/>
 The Peak Volume Threshold is adjustable within a normalized range up to 1.0, where 1.0 represents 100% of the ***relative***
-<br/>
 volume capacity or 0dBFS.
 <br/>
 <br/>
