@@ -448,10 +448,10 @@ namespace VolumeWatcher
         /// </summary>
         private void ToggleStartWithWindows()
         {
-            _configManager.UseStartWithWindows = !_configManager.UseStartWithWindows;
-
             ClearConsoleAndPrintMenu();
             Console.WriteLine();
+            
+            _configManager.UseStartWithWindows = !_configManager.UseStartWithWindows;
 
             if (_configManager.UseStartWithWindows)
             {
