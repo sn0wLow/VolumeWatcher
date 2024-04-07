@@ -32,4 +32,3 @@ Implemented in C# using NAudio for the [WASAPI](https://learn.microsoft.com/en-u
 <br/>
 
 ![ui example](https://i.imgur.com/0JcUre3.png)
-[1]: https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi
