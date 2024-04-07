@@ -470,7 +470,7 @@ namespace VolumeWatcher
         private void ToggleAutoStart()
         {
 
-            _configManager.UseAutoStartSW = !_configManager.UseStartWithWindows;
+            _configManager.UseAutoStartSW = !_configManager.UseAutoStartSW;
 
             ClearConsoleAndPrintMenu();
             Console.WriteLine();
