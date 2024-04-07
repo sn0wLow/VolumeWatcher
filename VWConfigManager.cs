@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 
@@ -113,12 +113,13 @@ namespace VolumeWatcher
         /// <summary>
         /// Synchronizes the application's autostart setting with the Windows registry
         /// </summary>
-        private void SyncRegistryAutostartKey()
+        /// <returns>True or false whether or not adding the Key was successful</returns>
+        private bool SyncRegistryAutostartKey()
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 ConsoleEx.WriteErrorLine("Start with Windows not available on any platform other than Windows");
-                return;
+                return false;
             }
 
             // Don't add Registry Keys in Debug
@@ -132,7 +133,8 @@ namespace VolumeWatcher
                 {
                     ConsoleEx.WriteWarningLine("DEBUG: SyncRegistryAutostartKey, key would've been removed");
                 }
-                return;
+
+                return false;
             }
 
             var keyState = RegistryKeyManager.GetKeyValueState("VolumeWatcher");
@@ -142,7 +144,8 @@ namespace VolumeWatcher
             {
                 ConsoleEx.WriteErrorLine("Failed to synchronize the VolumeWatcher AutoStart Setting with the Registry " +
                     "Key: \"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\" was null");
-                return;
+
+                return false;
             }
 
             if (UseStartWithWindows)
@@ -161,6 +164,7 @@ namespace VolumeWatcher
                 }
             }
 
+            return true;
         }
 
         /// <summary>
@@ -201,8 +205,14 @@ namespace VolumeWatcher
             set
             {
                 _config.UseStartWithWindows = value;
+                var syncSuccessful = SyncRegistryAutostartKey();
+
+                if (UseStartWithWindows && !syncSuccessful)
+                {
+                    _config.UseStartWithWindows = false;
+                }
+
                 SaveConfigToFile(_config);
-                SyncRegistryAutostartKey();
             }
         }
 
