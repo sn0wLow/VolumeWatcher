@@ -658,6 +658,7 @@ namespace VolumeWatcher
             {
                 _sessionManager!.OnSessionCreated -= SessionManager_OnSessionCreated;
 
+                Console.Clear();
                 _selectedDevice = SelectDeviceByUserInput();
 
                 _sessionManager = _selectedDevice.AudioSessionManager;
