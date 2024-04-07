@@ -27,10 +27,9 @@ The rate at which the Sessions will be watched can also be adjusted, as well as 
 <br/>
 
 ---
-
-<br/>
 Implemented in C# using NAudio for the [WASAPI](https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi) Wrapper.
 <br/>
 <br/>
 
 ![ui example](https://i.imgur.com/0JcUre3.png)
+[1]: https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi
