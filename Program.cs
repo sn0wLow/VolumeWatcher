@@ -1,4 +1,4 @@
-﻿using NAudio.CoreAudioApi;
+using NAudio.CoreAudioApi;
 using NAudio.CoreAudioApi.Interfaces;
 using System.Globalization;
 using System.Text;
@@ -86,7 +86,10 @@ namespace VolumeWatcher
                 PrintMenu();
             }
 
-            _ = SessionWatcherLoopAsync();
+            if (_configManager.UseAutoStartSW)
+            {
+                _ = SessionWatcherLoopAsync();
+            }
             await HandleUserInputAsync();
         }
 
@@ -394,6 +397,7 @@ namespace VolumeWatcher
         {
             await _sessionWatcherCTS.CancelAsync();
             await _sessionWatcherTCS.Task;
+            _sessionWatcherCTS.Dispose();
         }
 
         #region User Commands
@@ -450,7 +454,7 @@ namespace VolumeWatcher
         {
             ClearConsoleAndPrintMenu();
             Console.WriteLine();
-            
+
             _configManager.UseStartWithWindows = !_configManager.UseStartWithWindows;
 
             if (_configManager.UseStartWithWindows)
@@ -511,11 +515,9 @@ namespace VolumeWatcher
         {
             if (!_isSessionWatcherRunning)
             {
-                _ = SessionWatcherLoopAsync();
-
                 _isSessionWatcherRunning = true;
-
                 ClearConsoleAndPrintMenu();
+                _ = SessionWatcherLoopAsync();
 
                 ConsoleEx.WriteInfoLine($"{System.Environment.NewLine}Session Watcher started");
             }
